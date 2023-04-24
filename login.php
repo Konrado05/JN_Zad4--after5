@@ -5,6 +5,8 @@
     
     if ($db_recipes->connect_errno == 0)
     {
+        $sql_findUser = "SELECT * FROM users Where username='".$_POST['login']."'"."AND password='".hash('sha512', $_POST['password'])."'";
+        
         if($result = @$db_recipes->query($sql_findUser))
         {
             $count = $result->num_rows;
